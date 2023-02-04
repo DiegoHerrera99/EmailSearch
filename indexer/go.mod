@@ -1,3 +1,3 @@
-module email-indexer
+module indexer
 
 go 1.19

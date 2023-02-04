@@ -1,10 +1,10 @@
 package helpers
 
 import (
-	"email-indexer/globals"
 	"encoding/json"
 	"errors"
 	"fmt"
+	"indexer/globals"
 	"io"
 	"io/ioutil"
 	"net/http"

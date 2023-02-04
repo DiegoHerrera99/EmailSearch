@@ -1,9 +1,9 @@
 package main
 
 import (
-	"email-indexer/globals"
-	"email-indexer/helpers"
 	"fmt"
+	"indexer/globals"
+	"indexer/helpers"
 	"log"
 	"os"
 	"path/filepath"
