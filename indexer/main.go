@@ -6,6 +6,7 @@ import (
 	"indexer/helpers"
 	"log"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"sync"
 	"time"
@@ -24,7 +25,6 @@ func main() {
 	path := os.Args[1]
 
 	start := time.Now()
-	defer helpers.TimeTrack(start, "indexEmailDBProcess")
 
 	//SE ASEGURA QUE EL TEMPDIR SEA ÚNICO
 	if _, err := os.Stat(globals.TEMPDIR); err == nil {
@@ -38,10 +38,25 @@ func main() {
 		log.Fatal(err)
 	}
 
+	//SE LEVANTA EL PROCESO DE ZINCSEARCH EN LA TERMINAL
+	cmd := exec.Command("zinc")
+	cmd.Env = append(os.Environ(),
+		"ZINC_FIRST_ADMIN_USER=admin",
+		"ZINC_FIRST_ADMIN_PASSWORD=Complexpass#123",
+	)
+
+	err = cmd.Start()
+	if err != nil {
+		fmt.Println("ERROR: Cannot start Zincsearch process ")
+	}
+
+	fmt.Println("DEBUG: Starting Zincsearch process")
+	time.Sleep(2 * time.Second)
+
 	//SE CREA EL INDEX EN ZINCSEARCG
 	err = helpers.CreateIndex(globals.ZINC_CRTIDX_ENDPOINT, "POST", globals.ZINC_IDXMAP)
 	if err != nil {
-		fmt.Println("Zinc server is down!")
+		fmt.Printf("Zinc server is down!: %v \n", err)
 		return
 	}
 
@@ -76,4 +91,15 @@ func main() {
 	if err := os.RemoveAll(globals.TEMPDIR); err != nil {
 		log.Fatal(err)
 	}
+
+	helpers.TimeTrack(start, "indexEmailDBProcess") //Aquí finaliza la medición de tiempo del proceso de indexación
+
+	//SE DEJA VIVO EL PROCESO DE ZINCSEARCH
+	fmt.Println("DEBUG: Zincsearch UI running in http://localhost:4080")
+	err = cmd.Wait()
+	if err != nil {
+		fmt.Println("ERR: Cannot wait Zincsearch process")
+	}
+
+	fmt.Println("DEBUG: Zincsearch proccess finished")
 }
