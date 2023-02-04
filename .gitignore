@@ -5,8 +5,8 @@ indexer/temp/*
 indexer/temp
 indexer/enron_mail_20110402/*
 indexer/enron_mail_20110402
-indexer/indexer
-webserver/webserver
+#indexer/indexer
+#webserver/webserver
 data/*
 data
 email-reader/node_modules
