@@ -9,3 +9,7 @@ indexer/indexer
 webserver/webserver
 data/*
 data
+email-reader/node_modules
+email-reader/node_modules/*
+email-reader/dist
+email-reader/dist/*
