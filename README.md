@@ -10,15 +10,9 @@ Aplicación de consola que indexa bases de datos de correos con sintaxis [RFC 53
 
  Aplicación de lado del servidor que brinda API Rest para realizar busquedas de la base de datos de correos y sirve contenido estatico.
 
-#### **UI** 
+#### **UI - Email reader**
 
 Aplicación de lado cliente que brinda una UI sencilla y amigable para consumir el servicio API Rest y visualizar los correos.
-
----
-
-### Tecnologías utilizadas
-
-<table><tbody><tr><td>Go</td><td>Server side</td></tr><tr><td>Chi</td><td>Router</td></tr><tr><td>Vue3</td><td>Web app</td></tr><tr><td>Tailwind</td><td>Styles</td></tr></tbody></table>
 
 ---
 
@@ -52,6 +46,48 @@ go build -o <nameExec> main.go
 ./indexer <dir>
 ```
 
-## Formatting blocks with Markdown
+---
 
-Markdown can be used to create various block-level features, such as:
+## Webserver
+
+En el repositorio ya viene cargado un build del UI en la carpeta public del webserver, para levantar el webserver solo es necesario pasar como flag desde la terminal el puerto. Esto puede hacerse desde un build de Go o desde el main.go
+
+*   **El contenido estatico se sirve desde la carpeta “REPOSITORIO/webserver/public/”**
+
+> \<port> es el número de puerto donde se desea levantar el servidor
+> 
+> \<nameExec> es el nombre que le quieras dar al ejecutable
+
+#### Desde el main.go 
+
+```plaintext
+go run main.go <port>
+```
+
+#### Creando un ejecutable
+
+```plaintext
+go build -o <nameExec> main.go
+
+./<nameExec> <port>
+```
+
+#### Utilizando el ejecutable del repositorio
+
+```plaintext
+./webserver <port>
+```
+
+---
+
+## UI - Email reader
+
+Interfaz sencilla para consumir servicios api desde el webserver realizada en Vue3 y Tailwind CSS. 
+
+> **Ya un build viene cargado en la carpeta public del webserver**
+
+---
+
+## Tecnologías utilizadas
+
+<table><tbody><tr><td>Golang</td><td>Server side</td></tr><tr><td>Chi</td><td>Router</td></tr><tr><td>Vue3</td><td>Web app</td></tr><tr><td>Tailwind CSS</td><td>Styles</td></tr></tbody></table>
