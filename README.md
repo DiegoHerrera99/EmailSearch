@@ -1,8 +1,8 @@
-##  Email Search
+## Email Search
 
 Este repositorio cuenta de tres partes:
 
-#### **Indexer** 
+#### **Indexer**
 
 Aplicación de consola que indexa bases de datos de correos con sintaxis [RFC 5322](https://rfc-editor.org/rfc/rfc5322.html) y [RFC 6532](https://rfc-editor.org/rfc/rfc6532.html) en el servidor de busquedas Zincsearch. 
 
@@ -20,31 +20,51 @@ Aplicación de lado cliente que brinda una UI sencilla y amigable para consumir 
 
 Para indexar una base de datos es sencillo como pasar la ruta como parametro en el main.go o desde un build.
 
-**\* Correr los comandos desde la siguiente ruta:  “REPOSITORIO/indexer/”** 
+**\* Correr los comandos desde la siguiente ruta:  “REPOSITORIO/indexer/”**
 
 > \<dir> es la ruta donde se encuentra el directorio con los correos
 > 
 > \<nameExec> es el nombre que le quieras dar al ejecutable
 
-#### Desde el main.go 
+#### Desde el main.go
 
 ```plaintext
-go run main.go <dir>
+>> go run main.go <dir>
 ```
 
 #### Creando un ejecutable
 
 ```plaintext
-go build -o <nameExec> main.go
+>> go build -o <nameExec> main.go
 
-./<nameExec> <dir>
+>> ./<nameExec> <dir>
 ```
 
 #### Utilizando el ejecutable del repositorio
 
+*   **Primera vez**
+
+El script ./indexer realiza la configuración inicial del servicio. Luego de indexar la base de datos \<dir> el servicio zincsearch queda funcionando en segundo plano.
+
+> Se puede consultar la instancia de zincsearch desde la dirección **http://localhost:4080**
+
 ```plaintext
-./indexer <dir>
+>> ./indexer <dir>
 ```
+
+*   **Futuras ocasiones**
+
+Para futuras ocasiones ya no es necesario indexar de nuevo \<dir>.
+
+ Se puede seguir consumiendo la base de datos, utilizando el siguiente comando de consola.
+
+> Se puede consultar la instancia de zincsearch desde la dirección **http://localhost:4080**
+
+```plaintext
+>> zinc
+```
+
+ \* Si se cambian las credenciales de inicio de sesión de zincearch es necesario cambiarlas en el archivo **REPOSITORIO/indexer/globals/globals.go**
 
 ---
 
@@ -58,24 +78,26 @@ En el repositorio ya viene cargado un build del UI en la carpeta public del webs
 > 
 > \<nameExec> es el nombre que le quieras dar al ejecutable
 
-#### Desde el main.go 
+#### Desde el main.go
 
 ```plaintext
-go run main.go <port>
+>> go run main.go <port>
 ```
 
 #### Creando un ejecutable
 
 ```plaintext
-go build -o <nameExec> main.go
+>> go build -o <nameExec> main.go
 
-./<nameExec> <port>
+>> ./<nameExec> <port>
 ```
 
 #### Utilizando el ejecutable del repositorio
 
+> La ruta de acceso de la interfaz gráfica de consultas de la DB es accesible desde la siguiente dirección **http://localhost:\<port>**
+
 ```plaintext
-./webserver <port>
+>> ./webserver <port>
 ```
 
 ---
@@ -91,3 +113,5 @@ Interfaz sencilla para consumir servicios api desde el webserver realizada en Vu
 ## Tecnologías utilizadas
 
 <table><tbody><tr><td>Golang</td><td>Server side</td></tr><tr><td>Chi</td><td>Router</td></tr><tr><td>Vue3</td><td>Web app</td></tr><tr><td>Tailwind CSS</td><td>Styles</td></tr></tbody></table>
+
+Para mayor información sobre la herramienta zincsearch ir a [https://docs.zinc.dev](https://docs.zinc.dev)
