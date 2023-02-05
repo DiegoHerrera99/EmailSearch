@@ -41,8 +41,8 @@ func main() {
 	//SE LEVANTA EL PROCESO DE ZINCSEARCH EN LA TERMINAL
 	cmd := exec.Command("zinc")
 	cmd.Env = append(os.Environ(),
-		"ZINC_FIRST_ADMIN_USER=admin",
-		"ZINC_FIRST_ADMIN_PASSWORD=Complexpass#123",
+		"ZINC_FIRST_ADMIN_USER="+globals.ZINC_USER,
+		"ZINC_FIRST_ADMIN_PASSWORD="+globals.ZINC_PWD,
 	)
 
 	err = cmd.Start()
