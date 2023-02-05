@@ -18,7 +18,7 @@ Aplicación de lado cliente que brinda una UI sencilla y amigable para consumir 
 
 ### Tecnologías utilizadas
 
-![](https://33333.cdn.cke-cs.com/kSW7V9NHUXugvhoQeFaf/images/87d46e932aeea20915160b074351f54be2670eaae49a0e56.png) ![](https://33333.cdn.cke-cs.com/kSW7V9NHUXugvhoQeFaf/images/bee0d17dd3ae54d28f53b917f3adf426efef243dd3c0a758.png) ![](https://33333.cdn.cke-cs.com/kSW7V9NHUXugvhoQeFaf/images/77408158af96ac6836ff8e0c013118d8bbc3f1df02d7eb23.png) ![](https://33333.cdn.cke-cs.com/kSW7V9NHUXugvhoQeFaf/images/7eea1ac49260bfe7376f82c57e6c9b75a10190570af4e6f9.png) ![](https://33333.cdn.cke-cs.com/kSW7V9NHUXugvhoQeFaf/images/58c67ee5f3191810e650aef88341b39281bd16cdc500780e.png)
+<table><tbody><tr><td>Go</td><td>Server side</td></tr><tr><td>Chi</td><td>Router</td></tr><tr><td>Vue3</td><td>Web app</td></tr><tr><td>Tailwind</td><td>Styles</td></tr></tbody></table>
 
 ---
 
@@ -51,3 +51,7 @@ go build -o <nameExec> main.go
 ```plaintext
 ./indexer <dir>
 ```
+
+## Formatting blocks with Markdown
+
+Markdown can be used to create various block-level features, such as:
