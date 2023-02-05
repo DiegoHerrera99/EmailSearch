@@ -94,7 +94,7 @@ En el repositorio ya viene cargado un build del UI en la carpeta public del webs
 
 #### Utilizando el ejecutable del repositorio
 
-> La ruta de acceso de la interfaz gráfica de consultas de la DB es accesible desde la siguiente dirección **http://localhost<port>**
+> La ruta de acceso de la interfaz gráfica de consultas de la DB es accesible desde la siguiente dirección **http://localhost:port**
 
 ```plaintext
 >> ./webserver <port>
